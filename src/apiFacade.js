@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/sec_demo/api";
+import BASE_URL from "./settings.js";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -25,14 +25,14 @@ function apiFacade() {
 
   const login = (user, password) => {
     const opts = makeOptions("POST", true, {username: user, password: password})
-    return fetch(URL + "/login", opts)
+    return fetch(BASE_URL + "/login", opts)
       .then(handleHttpErrors)
       .then(res => setToken(res.token))
   }
 
   const fetchData = () => {
     const opts = makeOptions("GET", true)
-    return fetch(URL + "/info/user", opts).then(handleHttpErrors)
+    return fetch(BASE_URL + "/info/user", opts).then(handleHttpErrors)
   }
   const makeOptions= (method, addToken, body) => {
     const opts = {
