@@ -11,7 +11,7 @@ function SignUp(props) {
         if (signUpInfo.password === signUpInfo.rPassword) {
             facade.createUser(signUpInfo.username, signUpInfo.password, signUpInfo.rPassword);
         } else {
-            console.log("noget gik galt")
+            console.log("noget gik galt") //TODO, giv brugeren en besked
         }
     }
 
