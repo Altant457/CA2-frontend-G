@@ -31,7 +31,7 @@ function apiFacade() {
   }
 
   const createUser = (user, password, rPassword) => {
-    const opts = makeOptions("POST", false, {username: user, password: password})
+    const opts = makeOptions("POST", false, {userName: user, userPass: password})
     return fetch(BASE_URL + "/info/signup", opts)
         .then(handleHttpErrors)
   }
