@@ -32,4 +32,7 @@ function SignUp(props) {
     );
 }
 
+//TODO input felterne skal tømmes når brugeren er oprettet
+//TODO besked om at man er oprettet
+//TODO Man skal logges ind når man er signet op
 export default SignUp;
