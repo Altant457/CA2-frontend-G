@@ -10,13 +10,28 @@ function Header({setErrorMsg, loggedIn, setLoggedIn}) {
 
     return (
         <nav className="topnav">
-            <NavLink className="active" to="/"><i className="fa fa-fw fa-home"></i> Home</NavLink>
-            <NavLink to="/search"><i className="fa fa-fw fa-search"></i> Search</NavLink>
-            <NavLink to="/contact"><i className="fa fa-fw fa-envelope"></i> Contact</NavLink>
-            {!loggedIn ? (<Login setLoggedIn={setLoggedIn} setErrorMsg={setErrorMsg}  />) :
-                (<div>
-                    <LoggedIn setLoggedIn={setLoggedIn}/>
-                </div>)}
+
+            <div className="topnavLeft">
+                <p>Dit navn</p>
+            </div>
+
+            <div className="topnavMid">
+                <NavLink className="" to="/"><i className="fa fa-fw fa-home"></i> Home</NavLink>
+                <NavLink to="/search"><i className="fa fa-fw fa-search"></i> Search</NavLink>
+                <NavLink to="/contact"><i className="fa fa-fw fa-envelope"></i> Contact</NavLink>
+            </div>
+
+            <div className="topnavRight">
+                {!loggedIn ? (<Login setLoggedIn={setLoggedIn} setErrorMsg={setErrorMsg}  />) :
+                    (<div>
+                        <LoggedIn setLoggedIn={setLoggedIn}/>
+                    </div>)}
+                <NavLink to="/signup">
+                    <button className='signUp'>Sign up</button>
+                </NavLink>
+             
+            </div>
+
         </nav>
     );
 }
