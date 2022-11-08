@@ -22,6 +22,20 @@ function apiFacade() {
     localStorage.removeItem("jwtToken");
   }
 
+  const findPokemon = (String) => {
+    const opts = makeOptions("POST", true, {query: String})
+    return fetch(BASE_URL + "/info/pokemon", opts)
+      .then(handleHttpErrors)
+      .catch(err => {
+        if(err.status) {
+            err.fullError.then(e => console.log(e.message))
+        } else {
+            console.log("Network Error")
+        }
+    })
+  }
+  
+ 
 
   const login = (user, password) => {
     const opts = makeOptions("POST", true, {username: user, password: password})
@@ -64,7 +78,8 @@ function apiFacade() {
     login,
     logout,
     createUser,
-    fetchData
+    fetchData,
+    findPokemon
   }
 }
 const facade = apiFacade();
