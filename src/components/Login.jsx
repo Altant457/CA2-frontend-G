@@ -29,9 +29,6 @@ function Login({setLoggedIn, setErrorMsg}) {
                 <input onChange={onChange} type="text" placeholder="Password" id="password"/>
                 <button onClick={performLogin} type="submit">Login</button>
             </form>
-            <Link to="/signup">
-                <button>Sign up</button>
-            </Link>
         </div>
     )
 }
