@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import facade from "../apiFacade.js";
 
-function SignUp(props) {
+function SignUp({ setLoggedIn }) {
     const init = {username: "", password: "", rPassword: ""};
     const [signUpInfo, setSignUpInfo] = useState(init);
 
@@ -9,7 +9,17 @@ function SignUp(props) {
     const createUser = (evt) => {
         evt.preventDefault();
         if (signUpInfo.password === signUpInfo.rPassword) {
-            facade.createUser(signUpInfo.username, signUpInfo.password, signUpInfo.rPassword);
+            facade.createUser(signUpInfo.username, signUpInfo.password, signUpInfo.rPassword)
+                .then(() => {
+                  facade.login(signUpInfo.username, signUpInfo.password).then(() => setLoggedIn(true));
+                })
+                .catch(err => {
+                    if (err.status) {
+                        err.fullError.then(e => console.log(e.message))
+                    } else {
+                        console.log("Network Error");
+                    }
+                })
         } else {
             console.log("noget gik galt") //TODO, giv brugeren en besked
         }
@@ -24,8 +34,8 @@ function SignUp(props) {
             <h2>Sign up</h2>
             <form>
                 <input onChange={onChange} type="text" placeholder="User Name" id="username"/>
-                <input onChange={onChange} type="text" placeholder="Password" id="password"/>
-                <input onChange={onChange} type="text" placeholder="Repeat password" id="rPassword"/>
+                <input onChange={onChange} type="password" placeholder="Password" id="password"/>
+                <input onChange={onChange} type="password" placeholder="Repeat password" id="rPassword"/>
                 <button onClick={createUser} type="submit">Sign Up</button>
             </form>
         </div>
