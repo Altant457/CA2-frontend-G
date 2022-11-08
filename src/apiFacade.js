@@ -30,6 +30,12 @@ function apiFacade() {
       .then(res => setToken(res.token))
   }
 
+  const createUser = (user, password, rPassword) => {
+    const opts = makeOptions("POST", false, {userName: user, userPass: password})
+    return fetch(BASE_URL + "/info/signup", opts)
+        .then(handleHttpErrors)
+  }
+
   const fetchData = () => {
     const opts = makeOptions("GET", true)
     return fetch(BASE_URL + "/info/user", opts).then(handleHttpErrors)
@@ -57,6 +63,7 @@ function apiFacade() {
     loggedIn,
     login,
     logout,
+    createUser,
     fetchData
   }
 }
