@@ -20,14 +20,32 @@ function apiFacade() {
   }
   const logout = () => {
     localStorage.removeItem("jwtToken");
+    document.querySelector("#welcomeUser").innerHTML = `Welcome`
   }
 
+  const findPokemon = (String) => {
+    const opts = makeOptions("POST", true, {query: String})
+    return fetch(BASE_URL + "/info/pokemon", opts)
+      .then(handleHttpErrors)
+      .catch(err => {
+        if(err.status) {
+            err.fullError.then(e => console.log(e.message))
+        } else {
+            console.log("Network Error")
+        }
+    })
+  }
+  
+ 
 
   const login = (user, password) => {
     const opts = makeOptions("POST", true, {username: user, password: password})
     return fetch(BASE_URL + "/login", opts)
       .then(handleHttpErrors)
-      .then(res => setToken(res.token))
+      .then(res => {
+        document.querySelector("#welcomeUser").innerHTML = `Welcome, ${user}`
+        setToken(res.token);
+      })
   }
 
   const createUser = (user, password, rPassword) => {
@@ -64,7 +82,8 @@ function apiFacade() {
     login,
     logout,
     createUser,
-    fetchData
+    fetchData,
+    findPokemon
   }
 }
 const facade = apiFacade();

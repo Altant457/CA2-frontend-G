@@ -6,8 +6,9 @@ import Contact from "./pages/Contact.jsx";
 import facade from "./apiFacade";
 import Header from "./components/Header.jsx";
 import SignUp from "./components/SignUp.jsx";
+import Pokemon from "./pages/Pokemon.jsx";
 
-function App(props) {
+function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
 
@@ -22,10 +23,11 @@ function App(props) {
       <>
         <Header setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="search" element={<Search/>}/>
-          <Route path="contact" element={<Contact address={obj}/>}/>
-          <Route path="signup" element={<SignUp/>}/>
+          <Route path="" element={<Home/>}/>
+          <Route path="/search" element={<Search/>}/>
+          <Route path="/contact" element={<Contact address={obj}/>}/>
+          <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn}/>}/>
+          <Route path="/pokemon" element={<Pokemon/>}/>
           <Route path="*" element={<h1>Page Not Found !!!!</h1>}/>
         </Routes>
       </>
