@@ -20,6 +20,7 @@ function apiFacade() {
   }
   const logout = () => {
     localStorage.removeItem("jwtToken");
+    document.querySelector("#welcomeUser").innerHTML = `Welcome`
   }
 
   const findPokemon = (String) => {
@@ -41,7 +42,10 @@ function apiFacade() {
     const opts = makeOptions("POST", true, {username: user, password: password})
     return fetch(BASE_URL + "/login", opts)
       .then(handleHttpErrors)
-      .then(res => setToken(res.token))
+      .then(res => {
+        document.querySelector("#welcomeUser").innerHTML = `Welcome, ${user}`
+        setToken(res.token);
+      })
   }
 
   const createUser = (user, password, rPassword) => {

@@ -26,7 +26,7 @@ function Login({setLoggedIn, setErrorMsg}) {
         <div className="login-container">
             <form>
                 <input onChange={onChange} type="text" placeholder="Username" id="username"/>{" "}
-                <input onChange={onChange} type="text" placeholder="Password" id="password"/>
+                <input onChange={onChange} type="password" placeholder="Password" id="password"/>
                 <button onClick={performLogin} type="submit">Login</button>
             </form>
         </div>

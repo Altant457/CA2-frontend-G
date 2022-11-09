@@ -56,7 +56,7 @@ function findPokemon() {
                     <p className="search">
                         find pokemon
                     </p>
-                    <p class="searchDesc">Find en pokemon med vores smarte Pokemon API</p>
+                    <p className="searchDesc">Find en pokemon med vores smarte Pokemon API</p>
                     <input id='inputId' type="text" placeholder="1 || pikachu"/>
                     <button id="disable" onClick={findPokemon} className='pokeButton'>
                         <div className="innerPoke">
@@ -77,7 +77,7 @@ function findPokemon() {
             </div>
             <div className="pokeRight">
                 <div className="pokedex">
-                    <div class="pokedexTop">
+                    <div className="pokedexTop">
                         <div className="pokedexTopLeft">
                             <div className="bigCircle"></div>
                             <div className="circleArray">
@@ -101,7 +101,7 @@ function findPokemon() {
 
                         </div>
                         <p>{data?.pokemonName}</p>
-                        <p class="random">{data?.randomFact}</p>
+                        <p className="random">{data?.randomFact}</p>
 
                     </div>
                     <div className="bottomDisplay">

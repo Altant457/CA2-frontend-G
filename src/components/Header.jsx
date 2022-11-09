@@ -13,7 +13,7 @@ function Header({setErrorMsg, loggedIn, setLoggedIn}) {
         <nav className="topnav">
 
             <div className="topnavLeft">
-                <p>Dit navn</p>
+                <p id="welcomeUser">Welcome</p>
             </div>
 
             <div className="topnavMid">
