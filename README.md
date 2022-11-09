@@ -13,7 +13,7 @@
 *In order to use this code, you should have a local developer setup + 
 a "matching" server on the internet, which you have admin access to.
 You will also need to set up nginx and certbot on your server, if you want
-HTTPS (don't forget `ufw allow 443` to allow https traffic).    *
+HTTPS (don't forget `ufw allow 443` to allow https traffic).*
 
 ### Getting Started
 
